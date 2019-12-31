@@ -47,7 +47,7 @@ The downloadable zip file contains both the required DLLs, that you should place
 ## Downloadables
 
 * binaries
-  * [devicedetector_activex_and_standalone.zip]() (32bits version, MD5 sum: 23701e969c110eff5a25efdf0d8de194)
+  * [devicedetector_activex_and_standalone.zip](http://devinfo.net/downloads/axdevicedetector/devicedetector_activex_and_standalone.zip) (32bits version, MD5 sum: 23701e969c110eff5a25efdf0d8de194)
     Contains:
     * AxDeviceDetector.exe : the ActiveX server
     * SaDeviceDetector.exe: the standalone demo
