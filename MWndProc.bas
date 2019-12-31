@@ -53,6 +53,37 @@ Private Const GWL_WNDPROC As Long = -4&
 Private Declare Function CallWindowProc Lib "user32" Alias "CallWindowProcA" (ByVal plOldWndProc As Long, ByVal plhWnd As Long, ByVal plMsg As Long, ByVal pwParam As Long, ByVal plParam As Long) As Long
 Private Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal plhWnd As Long, ByVal plPropIndex As Long, ByVal pdwNewValue As Long) As Long
 
+'We'll repack the event messages in this
+'structure, so we can queue them in a CEventQueue class,
+'to notify them later via ActiveX events or OLE callbacks;
+'we can't notify out of process while processing the window message.
+Public Const EVENTID_ARRIVAL As Integer = 0
+Public Const EVENTID_REMOVAL As Integer = 1
+Public Type TEventMessage
+  iEventID      As Integer
+  sDeviceType   As String
+  iDriveCt      As Integer
+  sDriveLetters As String
+  sDriveTypes   As String
+End Type
+
+#If Win64 Then
+private Declare PtrSafe Sub OutputDebugString Lib "kernel32" Alias "OutputDebugStringA" (ByVal lpOutputString As String)
+#Else
+Private Declare Sub OutputDebugString Lib "kernel32" Alias "OutputDebugStringA" (ByVal lpOutputString As String)
+#End If
+
+'Send the message to the Windows debug monitor.
+'To see the debug messages, uncomment them in the source code,
+'download Mark Russinovitch's DebugView from sysinternals
+' https://docs.microsoft.com/fr-fr/sysinternals/
+'run it with administrator privileges and check "Capture Win32"
+'and also "Capture global Win32" in the capture menu.
+Public Sub DebugOutput(ByVal psMessage As String)
+  On Error Resume Next
+  OutputDebugString psMessage
+End Sub
+
 #If STANDALONE_VERSION Then
   Public Sub Main()
     frmDetector.Show

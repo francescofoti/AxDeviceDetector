@@ -9,5 +9,17 @@
 *.scc
 *.tmp
 *.log
+*.mdb
+*.accdb
+*.accde
+*.ldb
+*.laccdb
+*.laccde
+*.mda
+*.accda
+*.laccda
+*.lda
 AxDeviceDetector.exe
 SaDeviceDetector.exe
+AxDeviceDetectorTest.exe
+distrib/**/*
