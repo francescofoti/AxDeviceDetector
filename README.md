@@ -2,6 +2,10 @@
 
 Windows provides information about different sorts of attached devices, like hard disks, CDROMs, printers and others. These devices can be attached to the computer via different interfaces like USB, SCSI, serial or parallel ports, etc.
 
+See a sample video of what you can do with it in an Access Database application here:
+
+https://www.youtube.com/watch?v=qh5hrhpRNIg
+
 AxDeviceDetector.exe is a (32 bits) ActiveX OOP (out of process) EXE Server that exposes 2 classes:
 
 * DeviceDetector
@@ -9,7 +13,7 @@ AxDeviceDetector.exe is a (32 bits) ActiveX OOP (out of process) EXE Server that
 * DeviceInfo
   * This is a wrapper class, around the functionality provided by the [DeviceInfo C DLL](https://github.com/francescofoti/deviceinfo_dll) project (which itself is 32/64 bits).
 
-There are two projects in this repository:
+There are three projects in this repository:
 
 * AxDeviceDetector.vbp
 
@@ -25,6 +29,10 @@ There are two projects in this repository:
 
     **WARNING**:
     When you start this project in the Visual Basic IDE, it will tell you that the two classes (DeviceDetector and DeviceInfo) have a public interface, which is not possible for a standalone executable. This happens because the two projects share the same source files. The Visual Basic IDE will change these properties as private. Don't save the project with these changes, or you'll have to restore them back to "Multiuse" for the ActiveX server project.
+  
+* AxDeviceDetectorTest.vbp
+
+  * This is a standard EXE written in VB, acting as a test client using the ActiveX server (AxDeviceDetector.exe).
 
 There is a blog post that explains this project on my personal blog, coming up (I'll update this readme with the link).
 
@@ -39,9 +47,10 @@ The downloadable zip file contains both the required DLLs, that you should place
 ## Downloadables
 
 * binaries
-  * [devicedetector_activex_and_standalone.zip]() (32bits version, MD5 sum: 20220b60b6015b103c792f9b8bb19800)
+  * [devicedetector_activex_and_standalone.zip]() (32bits version, MD5 sum: 23701e969c110eff5a25efdf0d8de194)
     Contains:
     * AxDeviceDetector.exe : the ActiveX server
     * SaDeviceDetector.exe: the standalone demo
+    * AxDeviceDetectorTest.exe: a standard exe used to test the ActiveX server
     * deviceinfo.dll (please see my deviceinfo_dll repository)
     * msvbvm50.dll: the Visual Basic 5 runtime

@@ -26,8 +26,23 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
+'This form receives windows messages thru the ISubclass interface.
+'While we process the messages in the interface implementation,
+'we cannot raise events or invoke OLE callbacks, because of the
+'interprocess/thread communication limits we have when creating
+'ActiveX servers or DLLs.
+'If we try to raise events (or invoke OLE callbacks), we get
+'an "automation error".
+'An explanation of this phenomenon can be found here:
+'  https://jeffpar.github.io/kbarchive/kb/190/Q190523/
 '
-'https://jeffpar.github.io/kbarchive/kb/190/Q190523/
+'To circumvent this problem, we store the relevant information
+'that we get in ISubclass_WindowProc, and that we want to notify via
+'events into a local event queue.
+'A timer on this form, timNotify, will then push these message
+'to the DeviceDetector instance we hold here (in DetectorObject).
+'The Detector object will then safely notify its owner (outside
+'the ActiveX server), via events or OLE callbacks.
 '
 'NOTE: This window is never shown, it stays loaded, but invisible
 
@@ -221,6 +236,9 @@ Private Function ISubclass_WindowProc(ByVal plhWnd As Long, ByVal plMsg As Long,
   End Select
 End Function
 
+'DrivesFromMask() will transform the plUnitMask Long value into
+'to strings of 26 characters. It returns the count of meaningful
+'characters in these two strings.
 Private Function DrivesFromMask(ByVal plUnitMask As Long, ByRef psDriveLetters As String, ByRef psDriveTypes As String) As Integer
   Dim i             As Integer
   Dim iDriveCt      As Integer
