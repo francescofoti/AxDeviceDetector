@@ -34,7 +34,7 @@ There are three projects in this repository:
 
   * This is a standard EXE written in VB, acting as a test client using the ActiveX server (AxDeviceDetector.exe).
 
-There is a blog post that explains this project on my personal blog, coming up (I'll update this readme with the link).
+There is a [blog post that explains this project on my personal blog](https://francescofoti.com/2020/01/explaining-how-to-detect-device-arrival-removal-in-an-activex-server-in-real-time/).
 
 ## Runtime requirements
 
@@ -48,7 +48,7 @@ The downloadable zip file contains both the required DLLs, that you should place
 
 * binaries
   * [devicedetector_activex_and_standalone.zip](http://devinfo.net/downloads/axdevicedetector/devicedetector_activex_and_standalone.zip) (32bits version, MD5 sum: 23701e969c110eff5a25efdf0d8de194)
-    Contains:
+    Contains: 
     * AxDeviceDetector.exe : the ActiveX server
     * SaDeviceDetector.exe: the standalone demo
     * AxDeviceDetectorTest.exe: a standard exe used to test the ActiveX server
