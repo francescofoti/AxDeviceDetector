@@ -2,7 +2,7 @@
 
 Windows provides information about different sorts of attached devices, like hard disks, CDROMs, printers and others. These devices can be attached to the computer via different interfaces like USB, SCSI, serial or parallel ports, etc.
 
-See a sample video of what you can do with it in an Access Database application here:
+See a sample video of what you can do with it in an Access Database application (DeviceDetectorAuthDemo.accdb) here:
 
 https://www.youtube.com/watch?v=qh5hrhpRNIg
 
